@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Evals Prototype</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/67ed74e292.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        body  {
+          background-color: #c7c7c7;
+        }
+
+        nav  {
+          background-color: #BCD2EE; 
+        }
+
+        .navbar-nav {
+          margin-left: auto;
+        }
+
+        li  {
+          padding-right: 30px;
+        }
+
+        #banner  {
+          background-color: #3B5998;
+          color:white;
+          font-size:20px;
+          padding:1.5%;
+          width:76%;
+          height:100px;
+          margin:auto;
+          text-align: center;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        #card  {
+          background-color: #ffff;
+          width:75%;
+          height:900px;
+          margin:auto;
+          padding:2.5%;
+        }
+
+        h3  {
+          text-align: center;
+        }
+
+        html,body {
+          padding:0;margin:0;
+        }
+
+        p.likert-header {
+          text-align: center;
+          padding:2.5%;
+          font-size: 48px;
+          width:55%;
+          margin:auto;
+        }
+
+        form .statement {
+          display:block;
+          font-size: 14px;
+          font-weight: bold;
+          padding: 30px 0 0 4.25%;
+          margin-bottom:10px;
+        }
+
+        form .likert {
+          list-style:none;
+          width:90%;
+          padding-top:.2%;
+          margin:auto;
+          display:block;
+          border-bottom:2px solid #efefef;
+        }
+
+        form .likert:last-of-type {border-bottom:0;}
+
+        form .likert li {
+          display:inline-block;
+          width:19.5%;
+          text-align:center;
+        }
+
+        form  {
+          border: 1px solid black ;
+          border-radius: 32px;
+          height:40px;
+          width:80%;
+          margin:auto;
+        }
+
+        #labels  {
+          width:80%;
+          margin:auto;
+          padding:1.5%;
+          padding-top:5%;
+          display:flex;
+          justify-content: space-evenly;
+        }
+
+        input[type='radio']:after {
+          width: 25px;
+          height: 25px;
+          border-radius: 15px;
+          top: -2px;
+          left: -1px;
+          position: relative;
+          background-color: #3B5998;
+          content: '';
+          display: inline-block;
+          visibility: visible;
+        }
+
+        input[type='radio']:checked:after {
+            width: 25px;
+            height: 25px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #BCD2EE;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+        }
+
+        #buttons  {
+            padding-top:10%;
+            display:flex;
+            text-align: center;
+            width:70%;
+            margin:auto;
+        }
+
+        .button {
+            background-color: #ddd;
+            border: none;
+            color: black;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin:auto;
+            cursor: pointer;
+            border-radius: 50px;
+            width:225px;
+            font-size:28px;
+        }
+
+        #prev  {
+            background-color: #BCD2EE;
+        }
+
+        #next  {
+            background-color: #3B5998;
+            color:white;
+        }
+
+        #bottomBanner  {
+            background-color: #3B5998;
+            color:white;
+            font-size:20px;
+            padding:1.5%;
+            width:76%;
+            height:100px;
+            margin:auto;
+            text-align: center;
+        }
+
+        html,body   {
+            overflow-x: hidden;
+        } 
+
+        @media screen and (max-width: 800px)  {
+            p.likert-header  {
+              font-size:24px;
+            }
+            #banner  {
+              font-size:16px; 
+              padding:5%;
+            }
+        }
+
+        @media screen and (max-width: 500px)  {
+            #banner  {
+              font-size:11px; 
+              padding-top:5%;
+              width:92%;
+              height:50px;
+            }
+            #card  {
+              width:90%;
+              height:600px;
+            }
+            #bottomBanner  {
+              width:92%;
+              height:50px;
+              padding-bottom:10%;
+            }
+            .button  {
+              width:100px;
+              font-size:14px;
+              padding:2.5%;
+            }
+            #buttons  {
+              padding-top:25%;
+            }
+            #labels  {
+              font-size:9px;
+              width:90%;
+            }
+            label  {
+              padding:.5%;
+            }
+            form  {
+              height:30px;
+            }
+            form .likert li  {
+              width:10%;
+              padding:-2.5%;
+            }
+            input[type='radio']:after  {
+              width:17px;
+              height:17px;
+            }
+            input[type='radio']:checked:after  {
+              width:17px;
+              height:17px;
+            }
+            h3  {
+              padding:10%;
+            }
+            p.likert-header  {
+              width:95%;
+              padding-bottom:15%;
+            }
+            form .likert  {
+              width:450px;
+            }
+            .navbar {
+              position: relative;
+            }
+            i  {
+              padding-right:5%;
+            }
+            a.navbar-brand  {
+              margin:auto;
+            }
+        }  
+
+        @media screen and (min-width: 501px)  {
+          #hamburger  {
+            visibility:hidden !important;
+         }
+        }
+
+    </style>
+</head>
+<body>
+    
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#"><h3>Smartevals</h3></a>
+                <div id="hamburger">
+                  <i class="fas fa-bars" style="color:#3B5998; font-size:28px;"></i>
+                </div>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">My Evals</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Privacy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Help</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Change Password</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+        <div id="space" class="m-4 pb-5">
+          
+        </div>
+
+        <div id="banner">
+  
+            <p>
+              Professor: John Smith
+            </p>
+            
+            <p>
+              Course ID: 12596d
+            </p>
+            
+            <p>
+              Answer Honestly
+            </p>
+
+          </div>
+               
+        <div class="container-fluid" id="card">
+            
+          <h3>1/15</h3>
+
+          <div class="wrap">
+            
+            <p class="likert-header">1. The course schedule was flexible and well paced, with realistic deadlines.</p>
+            
+            <div id="labels">
+
+              <label id="strongDisagree">Strongly Disagree</label>
+              <label id="disagree">Disagree</label>
+              <label style="padding-left:5%;padding-right:5%;">Neutral</label>
+              <label style="padding-right:2.5%;">Agree</label>
+              <label>Strongly Agree</label>
+
+            </div>
+            
+            <form action="">
+              <ul class='likert'>
+                <li>
+                  <input type="radio" name="likert" value="strong_disagree">
+                </li>
+                <li>
+                  <input type="radio" name="likert" value="disagree">
+                </li>
+                <li>
+                  <input type="radio" name="likert" value="neutral">
+                </li>
+                <li>
+                  <input type="radio" name="likert" value="agree">
+                </li>
+                <li>
+                  <input type="radio" name="likert" value="strong_agree">
+                </li>
+              </ul>
+            </form>
+          </div>
+
+          <div id="buttons">
+
+            <button id="prev" class="button">Prev</button>
+            <button onclick="window.location.href='prototype2.html'" id="next" class="button">Next</button>
+
+          </div>
+
+        </div>
+
+        <div id="bottomBanner">
+
+
+
+        </div>
+
+</body>
+</html>
